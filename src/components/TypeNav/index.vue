@@ -1692,8 +1692,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name:'TypeNav'
+  name:'TypeNav',
+  data(){
+    return {
+     
+    }
+  },
+  computed:{
+    ...mapState({
+      BaseCategoryList:state => state.home.BaseCategoryList
+    })
+  }
 }
 </script>
 

@@ -13,6 +13,15 @@ import Header from "./components/Header"
 import Footer from './components/Footer'
 export default {
   name: 'App',
+   //请求3级分类列表数据
+  mounted() {
+    this.getCategoryList();
+  },
+  methods:{
+    getCategoryList() {
+      this.$store.dispatch("getCategoryList");
+    },
+  },
  components:{
   Header,
   Footer

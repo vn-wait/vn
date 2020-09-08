@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 //引入router
 import router from './Router'
+//引入vuex
+import store from './store'
 Vue.config.productionTip = false
 
 
@@ -13,4 +15,5 @@ Vue.component('TypeNav',TypeNav)
 new Vue({
   render: h => h(App),
   router, //注册全局，用this 可以调用
+  store
 }).$mount('#app')
