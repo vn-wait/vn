@@ -74,6 +74,9 @@ export default {
        }
 
      }
+      if(this.$route.query){
+        location.query = this.$route.query
+      }
      this.$router.push(location)
    
     }

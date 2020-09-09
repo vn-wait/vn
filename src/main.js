@@ -6,10 +6,14 @@ import router from './Router'
 import store from './store'
 Vue.config.productionTip = false
 
+//引入mock
+import './mock/MockServer'
 
 //定义全局组件, 引入 注册  使用
 import TypeNav from './components/TypeNav'
-Vue.component('TypeNav',TypeNav)
+Vue.component('TypeNav', TypeNav)
+import SliderLoop from './components/SliderLoop'
+Vue.component('SliderLoop', SliderLoop)
 
 
 new Vue({
