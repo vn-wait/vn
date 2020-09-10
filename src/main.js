@@ -14,10 +14,17 @@ import TypeNav from './components/TypeNav'
 Vue.component('TypeNav', TypeNav)
 import SliderLoop from './components/SliderLoop'
 Vue.component('SliderLoop', SliderLoop)
+import pagination from './components/pagination'
+Vue.component('pagination', pagination)
+
 
 
 new Vue({
   render: h => h(App),
+  beforeCreate () {
+  Vue.prototype.$bus=this //配置全局事件总线
+
+  },
   router, //注册全局，用this 可以调用
   store
 }).$mount('#app')

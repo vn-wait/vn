@@ -25,3 +25,43 @@ export const reqfloorList = () => {
    })
 
 }
+
+//4.搜索商品  /api/list  POST  需要请求体参数
+
+
+
+/* 
+category1Id
+category2Id 
+category3Id 
+categoryName
+keyword string 
+props 
+
+trademark 
+
+order string N 排序方式
+1: 综合, 2: 价格 asc: 升序, desc: 降序
+示例: "1:desc"
+pageNo number N 页码
+pageSize number N 每页数量
+
+*/
+
+
+export const reqList = (searchParams) => {
+  return Ajax({
+    url: '/list',
+    method: 'POST',
+    data: searchParams
+  })
+}
+
+// /api/item/{ skuId }   GET  
+
+export const reqdetails = (skuId) => {
+  return Ajax({
+    url: `/item/${skuId}`,
+    method:'get'
+  })
+}

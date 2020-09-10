@@ -58,7 +58,16 @@ export default {
       keyword:''
     }
   },
+  mounted(){
+    this.$bus.$on('clearKeyword',this.clearKeyword)
+  },
   methods:{
+    //删除关键字
+    clearKeyword(){
+      this.keyword=''
+    },
+
+
     //去搜索页
     toSearch(){
       //由于有能我们需要带关键字过去所以这里需要改一下

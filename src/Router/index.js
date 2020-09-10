@@ -52,7 +52,13 @@ const router = new VueRouter({
   //在里面定义路由组件,
   //我们拆分一下
   routes,
-
+  //解决进详情页的时候滚动条最下面的问题
+ scrollBehavior(to, from, savedPosition) {
+   return {
+     x: 0,
+     y: 0
+   }
+ }
 
 
 })

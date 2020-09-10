@@ -4,9 +4,15 @@ import Home from "../pages/Home"
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Search from '../pages/Search'
+import Detail from '../pages/Detail'
 
 //暴露出去时一个数组
 export default [
+  //详情页
+  {
+    path: '/detail/:skuId',
+    component: Detail
+  },
 
   {
     /* 有时候需要携带关键字去搜索页，但是也可以不携带关键字，这里的处理 ?问好代表可传可不传 */
