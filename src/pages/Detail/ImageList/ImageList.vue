@@ -1,8 +1,10 @@
 <template>
-  <div class="swiper-container">
+  <div class="swiper-container" ref="img">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="../images/s1.png">
+      <div class="swiper-slide" v-for="(img,index) in imgList" :key="img.id">
+        <img :src="img.imgUrl" 
+        :class="{active:index=== defaultIndex}" 
+        @click="changeDefaultIndex(index)">
       </div>
     </div>
     <div class="swiper-button-next"></div>
@@ -15,6 +17,52 @@
   import Swiper from 'swiper'
   export default {
     name: "ImageList",
+    props:['imgList'],
+    data () {
+      return {
+          defaultIndex: 0, //默认的下标（带橙色的框框）
+      }
+    },
+    methods:{
+      changeDefaultIndex(index){
+        this.defaultIndex = index
+        //触发大图的changeDefaultIndex
+      this.$bus.$emit('changeDefaultIndex',index)
+      }
+    },
+    watch:{
+      //这里又是一个轮播图，所以用组件即可
+      imgList:{
+        immediate:true,
+        handler(newold,oldval){
+          this.$nextTick(() => {
+         new Swiper(this.$refs.img, {
+           
+              slidesPerView : 5,
+              slidesPerGroup : 5,
+           
+          
+            // 如果需要分页器
+            pagination: {
+              el: '.swiper-pagination'
+            },
+
+            // 如果需要前进后退按钮
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev'
+            },
+
+           
+          })
+        })
+      
+
+
+
+        }
+      }
+    }
   }
 </script>
 
@@ -43,10 +91,10 @@
           padding: 1px;
         }
 
-        &:hover {
+      /*   &:hover {
           border: 2px solid #f60;
           padding: 1px;
-        }
+        } */
       }
     }
 
