@@ -65,3 +65,21 @@ export const reqdetails = (skuId) => {
     method:'get'
   })
 }
+//7.添加到购物车(对已有物品进行数量改动)
+///api/cart/addToCart/{ skuId }/{ skuNum }
+export const reqAddOrUpdateCart = (skuId, skuNum) => {
+  return Ajax({
+    url: `/cart/addToCart/${skuId}/${skuNum}`,
+    method: 'POST'
+})
+
+}
+//6.获取购物车列表
+///api/cart/cartList  grt请求 没有参数
+
+export const reqcartList = () => {
+  return Ajax({
+    url: '/cart/cartList',
+    method:'GET'
+  })
+} 

@@ -1,5 +1,6 @@
 import {
-  reqdetails
+  reqdetails,
+  reqAddOrUpdateCart
 } from '../api'
 
 const state = {
@@ -15,7 +16,8 @@ const actions = {
       commit('RESVEDETAILSINFO', result.data)
        console.log(6666)
     }
- }
+  }
+  
 
 }
 const mutations = {

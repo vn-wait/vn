@@ -9,7 +9,8 @@ NProgress.done(); 加载结束
 //引入这个包还需要引入js文件和css问价
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
-
+//引入store
+import store from '../store'
 
 
 
@@ -27,6 +28,14 @@ instance.interceptors.request.use((config) => {
   
  NProgress.start();
 
+ //在请求头中添加uuid
+ // 1拿到uuid
+  let userTempId = store.state.user.userTempId
+  //2添加到请求头中
+  config.headers.userTempId = userTempId
+  
+  
+  
 
  //config 请求报文，可以在这里设置请求头
   return config;

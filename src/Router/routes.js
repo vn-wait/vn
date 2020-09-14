@@ -5,9 +5,20 @@ import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Search from '../pages/Search'
 import Detail from '../pages/Detail'
+import AddCartSuccess from '../pages/AddCartSuccess'
+import ShopCart from "../pages/ShopCart"
 
 //暴露出去时一个数组
 export default [
+  {
+    path: '/shopcart',
+    component: ShopCart
+  },
+  //添加到购物车成功页
+  {
+    path: '/addcartsuccess',
+    component: AddCartSuccess
+  },
   //详情页
   {
     path: '/detail/:skuId',
