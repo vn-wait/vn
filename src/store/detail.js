@@ -1,6 +1,6 @@
 import {
   reqdetails,
-  reqAddOrUpdateCart
+  
 } from '../api'
 
 const state = {

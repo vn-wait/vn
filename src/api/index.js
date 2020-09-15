@@ -1,6 +1,7 @@
 /* 这里面定义的请求函数，引入2次封装的ajax */
 import Ajax from '../ajax/Ajax'
 import Mork from '../ajax/Mork'
+import { method } from 'lodash'
 
 //3.首页三级分类  /api/product/getBaseCategoryList  GET  记得暴露出去
 export const reqCategoryList = () => {
@@ -83,3 +84,20 @@ export const reqcartList = () => {
     method:'GET'
   })
 } 
+
+//7.切换商品选中状态  /api/cart/checkCart/{skuID}/{isChecked}   GET
+export const reqUpdateIsCheck = (skuID,isChecked) => {
+  return Ajax({
+    url: `/cart/checkCart/${skuID}/${isChecked} `,
+    method:'get'
+  })
+}
+//8.删除购物车商品  /api/cart/deleteCart/{skuId} 
+export const reqDeleteCart = (skuId) => {
+  return Ajax({
+    url: `/cart/deleteCart/${skuId}`,
+    method: 'DELETE'
+   })
+
+
+}
