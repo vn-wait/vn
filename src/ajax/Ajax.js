@@ -31,6 +31,16 @@ instance.interceptors.request.use((config) => {
  //在请求头中添加uuid
  // 1拿到uuid
   let userTempId = store.state.user.userTempId
+ //这里要将token添加到请求头中
+  let token = store.state.user.userInfo.token
+  //判断有没有，有就添加进去
+  if (token) {
+    config.headers.token = token
+  }
+
+
+
+
   //2添加到请求头中
   config.headers.userTempId = userTempId
   

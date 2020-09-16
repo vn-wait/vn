@@ -7,9 +7,33 @@ import Search from '../pages/Search'
 import Detail from '../pages/Detail'
 import AddCartSuccess from '../pages/AddCartSuccess'
 import ShopCart from "../pages/ShopCart"
+import Trade from '../pages/Trade'
+import Pay from '../pages/Pay'
+import PaySuccess from '../pages/PaySuccess'
+import Center from '../pages/Center'
 
 //暴露出去时一个数组
 export default [
+  {
+    path: '/center',
+    component: Center
+  },
+  {
+    path: '/paysuccess',
+    component: PaySuccess
+
+  },
+  {
+    path: '/Pay',
+    component: Pay
+  },
+
+  {
+    path: '/trade',
+    component: Trade
+  },
+
+
   {
     path: '/shopcart',
     component: ShopCart
@@ -29,7 +53,7 @@ export default [
     /* 有时候需要携带关键字去搜索页，但是也可以不携带关键字，这里的处理 ?问好代表可传可不传 */
     path: '/search/:keyword?',
     component: Search,
-    name:'Search'
+    name: 'Search'
   },
   {
     path: '/register',

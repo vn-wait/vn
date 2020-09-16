@@ -5,13 +5,20 @@
       <div class="container">
         <div class="loginList">
           <p>尚品汇欢迎您！</p>
-          <p>
+          <!-- 当用户登录了之后这里显示的东西要变，所以要判断一下 -->
+          <p v-if="$store.state.user.userInfo.name">
+            <!--  <router-link  to="/login">{{$store.state.user.userInfo.name}}</router-link> -->
+            <a href="javascript:;">{{$store.state.user.userInfo.name}}</a>
+            <!--    <router-link  to="/register"  class="register">推出登录</router-link> -->
+            <a href="javascript:;" class="register" @click="logout">退出登录</a>
+          </p>
+          <p v-else>
             <span>请</span>
             <!-- 这里用router-link 来却换导航，在用router-view来显示 -->
-            <router-link  to='/login'>登录</router-link>
+            <router-link to='/login'>登录</router-link>
             <!--   <a href="###">登录</a> -->
             <!--  <a href="###" class="register">免费注册</a> -->
-            <router-link  to='/register' class="register">免费注册</router-link>
+            <router-link to='/register' class="register">免费注册</router-link>
           </p>
         </div>
         <div class="typeList">
@@ -29,8 +36,8 @@
     <!--头部第二行 搜索区域-->
     <div class="bottom">
       <h1 class="logoArea">
-        <router-link to='/home' class="logo" title="尚品汇"> 
-        <img src="./images/logo.png" alt="">
+        <router-link to='/home' class="logo" title="尚品汇">
+          <img src="./images/logo.png" alt="">
         </router-link>
 
         <!-- <a class="logo" title="尚品汇" href="###" target="_blank">
@@ -52,45 +59,53 @@
 
 <script>
 export default {
-  name:'Header',
-  data(){
+  name: 'Header',
+  data() {
     return {
-      keyword:''
+      keyword: ''
     }
   },
-  mounted(){
-    this.$bus.$on('clearKeyword',this.clearKeyword)
+  mounted() {
+    console.log(this.$store.state.user)
+    this.$bus.$on('clearKeyword', this.clearKeyword)
   },
-  methods:{
-    //删除关键字
-    clearKeyword(){
-      this.keyword=''
+  methods: {
+    //定义退出登录
+    async logout() {
+      try {
+        await this.$store.dispatch('logout')
+        alert('退出成功')
+        this.$router.push('/')
+      } catch (error) {
+        alert(error.message)
+      }
     },
 
+    //删除关键字
+    clearKeyword() {
+      this.keyword = ''
+    },
 
     //去搜索页
-    toSearch(){
+    toSearch() {
       //由于有能我们需要带关键字过去所以这里需要改一下
       //收集parmas参数
-     let location = {
-       //注意params参数它不能和path一起配合切换路由，这能和name配合,
-       //解决完这个之后，会遇见一个bug，就是关键字为空的时候，会导致页面路径出问题， 1解决方式 1 要吗不设置params参数 2在可传可不传的前提下关键字为空的时候值为undifend
+      let location = {
+        //注意params参数它不能和path一起配合切换路由，这能和name配合,
+        //解决完这个之后，会遇见一个bug，就是关键字为空的时候，会导致页面路径出问题， 1解决方式 1 要吗不设置params参数 2在可传可不传的前提下关键字为空的时候值为undifend
 
-       //path:'/search',
-       name:'Search',
-       params:{
-         keyword:this.keyword || undefined
-       }
-
-     }
-      if(this.$route.query){
+        //path:'/search',
+        name: 'Search',
+        params: {
+          keyword: this.keyword || undefined
+        }
+      }
+      if (this.$route.query) {
         location.query = this.$route.query
       }
-     this.$router.push(location)
-   
+      this.$router.push(location)
     }
   }
-  
 }
 </script>
 

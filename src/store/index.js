@@ -17,6 +17,7 @@ import user from './user'
 import search from './search'
 import detail from './detail'
 import shopcart from "./shopcart"
+import trade from './trade'
 
 const store = new Vuex.Store({
  //里面有它的几个核心
@@ -30,7 +31,8 @@ const store = new Vuex.Store({
     user,
     search,
     detail,
-    shopcart
+    shopcart,
+    trade
 
   }
 
